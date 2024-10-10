@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel= "stylesheet" href="style.css">
+    <title>Area Calculator</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="wrapper-content">
+            <nav class="navbar">
+                <h1 id="top">Basic Geometry</h1>
+                <p class="info">In this section, we are going to find the Area of some two-dimension shapes. You can click on any shape below:</p>
+                <ul class="navbar-nav">
+                    <li>
+                        <a class="nav-link" href="#circle">
+                            <ion-icon name="ellipse-outline"></ion-icon>    
+                            <p class="link-text">Circle</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="#triangle">
+                            <ion-icon name="triangle-outline"></ion-icon>
+                            <p class="link-text">Triangle</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="#square">
+                            <ion-icon name="square-outline"></ion-icon>
+                            <p class="link-text">Square</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="#rectangle">
+                            <ion-icon name="tablet-landscape-outline"></ion-icon>
+                            <p class="link-text">Rectangle</p>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- section for circle -->
+            <section id="circle" class="container">
+                <h2 class="title">Circle Area</h2>
+                <div class="form-container">
+                    <div>
+                        <div class="container-input">
+                            <label for="radius">Enter the value of the circle's radius:</label>
+                            <input type="text" id="radius" class="input" placeholder="Enter an integer">
+                        </div>
+                    </div>
+                    <div class="container-result">
+                        <label for="circle_area">Result:</label>
+                        <input type="text" id="circle-area" class="input" readonly>
+                    </div>
+                </div>
+                <hr>
+                <button id="circle-btn" class="btn" onclick="getCircleArea()">Calculate</button>
+            </section>
+
+            <div class="go">
+                <a href="#top">
+                    <span class="circle" aria-hidden="true">
+                        <span class="icon arrow"></span>
+                    </span>
+                    <span class="button-text">Go to top</span>
+                </a>
+            </div>
+
+            <!-- section for triangle -->
+            <section id="triangle" class="container">
+                <h2 class="title">Triangle Area</h2>
+                <div class="form-container">
+                    <div>
+                        <div class="container-input">
+                            <label for="base">Enter the value of the traingle's base:</label>
+                            <input type="text" id="base" class="input" placeholder="Enter an integer">
+                        </div>
+        
+                        <div class="container-input">
+                            <label for="height">Enter the value of the traingle's height:</label>
+                            <input type="text" id="t-height" class="input" placeholder="Enter an integer">
+                        </div>
+                    </div>
+                    <div class="container-result">
+                        <label for="triangle_area">Result:</label>
+                        <input type="text" id="triangle-area" class="input" readonly>
+                    </div>
+                </div>
+                <hr>
+                <button id="triangle-btn" class="btn" onclick="getTriangleArea()">Calculate</button>
+            </section>
+
+            <div class="go">
+                <a href="#top">
+                    <span class="circle" aria-hidden="true">
+                        <span class="icon arrow"></span>
+                    </span>
+                    <span class="button-text">Go to top</span>
+                </a>
+            </div>
+
+            <!-- section for square -->
+            <section id="square" class="container">
+                <h2 class="title">Square Area</h2>
+                <div class="form-container">
+                    <div>
+                        <div class="container-input">
+                            <label for="width">Enter the value of the square's width:</label>
+                            <input type="text" id="s-width" class="input" placeholder="Enter an integer">
+                        </div>
+                    </div>
+                    <div class="container-result">
+                        <label for="square_area">Result:</label>
+                        <input type="text" id="square-area" class="input" readonly>
+                    </div>
+                </div>
+                <hr>
+                <button id="square-btn" class="btn" onclick="getSquareArea()">Calculate</button>
+            </section>
+
+            <div class="go">
+                <a href="#top">
+                    <span class="circle" aria-hidden="true">
+                        <span class="icon arrow"></span>
+                    </span>
+                    <span class="button-text">Go to top</span>
+                </a>
+            </div>
+
+            <!-- section for rectangle -->
+            <section id="rectangle" class="container">
+                <h2 class="title">Rectangle Area</h2>
+                <div class="form-container">
+                    <div>
+                        <div class="container-input">
+                            <label for="width">Enter the value of the rectangle's width:</label>
+                            <input type="text" id="r-width" class="input" placeholder="Enter an integer">
+                        </div>
+                        <div class="container-input">
+                            <label for="height">Enter the value of the rectangle's height:</label>
+                            <input type="text" id="r-height" class="input" placeholder="Enter an integer">
+                        </div>
+                    </div>
+                    <div class="container-result">
+                        <label for="rectangle_area">Result:</label>
+                        <input type="text" id="rectangle-area" class="input" readonly>
+                    </div>
+                </div>
+                <hr>
+                <button id="rectangle-btn" class="btn" onclick="getRectangleArea()">Calculate</button>
+            </section>
+
+            <div class="go">
+                <a href="#top">
+                    <span class="circle" aria-hidden="true">
+                        <span class="icon arrow"></span>
+                    </span>
+                    <span class="button-text">Go to top</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Function to calculate the area -->
+    <script>
+        function getCircleArea(){
+            let radius = parseInt(document.getElementById('radius').value);
+            if (!isNaN(radius) && radius > 0){
+                let circle_area = Math.PI * radius * radius;
+            document.getElementById('circle-area').value = circle_area.toFixed(2);
+            }
+            else{
+                document.getElementById('circle-area').value = "Invalid input";
+            }
+        }
+
+        function getTriangleArea(){
+            let base = parseInt(document.getElementById('base').value);
+            let height = parseInt(document.getElementById('t-height').value);
+            if (!isNaN(base) && base > 0 || !isNaN(height) && height > 0){
+                let triangle_area = base * height * (1/2);
+                document.getElementById('triangle-area').value = triangle_area.toFixed(2);
+            }
+            else{
+                document.getElementById('triangle-area').value = "Invalid input";
+            }
+        }
+
+        function getSquareArea(){
+            let width = parseInt(document.getElementById('s-width').value);
+            if (!isNaN(width) && width > 0){
+                let square_area = width * width;
+                document.getElementById('square-area').value = square_area.toFixed(2);
+            }
+            else{
+                document.getElementById('square-area').value = "Invalid input";
+            }
+        }
+
+        function getRectangleArea(){
+            let height = parseInt(document.getElementById('r-height').value);
+            let width = parseInt(document.getElementById('r-width').value);
+            if (!isNaN(height) && height > 0 || !isNaN(width) && width > 0){
+                let rectangle_area = height * width;
+                document.getElementById('rectangle-area').value = rectangle_area.toFixed(2);
+            }
+            else{
+                document.getElementById('rectangle-area').value = "Invalid input";
+            }
+        }
+    </script>
+
+    <!-- script for ion icon -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
